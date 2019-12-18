@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 객체 생성 -->
+	<bean class="sample04.Student" id="st1"/>
+	<bean class="sample04.Student" id="st2">
+		<property name="addr" value="판교"></property>
+		<property name="name" value="희정"></property>
+	</bean>
+	
+	<bean class="sample04.Student" id="st3">
+		<property name="name" value="나영"></property>
+		<property name="no" value="1111"></property>
+		<property name="addr" value="제주도"></property>
+		<property name="phone" value="1111"></property>
+	</bean>
+	
+	<bean class="sample04.StudentDAOImpl" id="dao"></bean>
+	
+	<bean class="sample04.StudentServiceImpl" id="service">
+		<property name="studentDao" ref="dao"></property>
+	</bean>
+	
+	<bean class="sample04.StudentController" id="controller">
+		<property name="service" ref="service"></property>
+		<property name="student" ref="st3"></property>
+	</bean>
+</beans>
